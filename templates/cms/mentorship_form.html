@@ -1,0 +1,60 @@
+{% extends 'cms/base_cms.html' %} {% block content %}
+<div class="header">
+  <h1>Edit Mentorship Card</h1>
+  <a href="{% url 'mentorship_list' %}" class="btn">Back to List</a>
+</div>
+
+<div class="card" style="max-width: 600px">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label>Title</label>
+    <input
+      type="text"
+      name="title"
+      value="{{ card.title|default:'' }}"
+      required
+    />
+
+    <label>Description</label>
+    <textarea name="description" rows="4">
+{{ card.description|default:'' }}</textarea
+    >
+
+    <label>Destination Link</label>
+    <input
+      type="url"
+      name="destination_link"
+      value="{{ card.destination_link|default:'' }}"
+      required
+    />
+
+    <label>Card Image</label>
+    {% if card.image %}
+    <img
+      src="{{ card.image.url }}"
+      alt="Current Image"
+      style="max-height: 100px; display: block; margin-bottom: 10px"
+    />
+    {% endif %}
+    <input type="file" name="image" accept="image/*" />
+
+    <label>Active</label>
+    <input
+      type="checkbox"
+      name="is_active"
+      {%
+      if
+      card.is_active
+      %}checked{%
+      endif
+      %}
+      style="width: auto"
+    />
+
+    <button type="submit" class="btn btn-accent" style="margin-top: 1rem">
+      Save Card
+    </button>
+  </form>
+</div>
+{% endblock %}

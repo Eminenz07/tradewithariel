@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeWithAriel | Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/cms_style.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      class="mobile-toggle"
+      onclick="document.querySelector('.sidebar').classList.toggle('active')"
+    >
+      ☰ Menu
+    </div>
+    <div class="sidebar">
+      <h2>Admin | TradeWithAriel</h2>
+      <nav>
+        <a href="{% url 'dashboard' %}" class="nav-item">Dashboard</a>
+        <a href="{% url 'mentorship_list' %}" class="nav-item">Mentorship</a>
+        <a href="{% url 'product_list' %}" class="nav-item"
+          >Offers (Marketplace)</a
+        >
+        <a href="{% url 'about_edit' %}" class="nav-item">About Section</a>
+        <a href="{% url 'settings_edit' %}" class="nav-item">Settings</a>
+        <a
+          href="{% url 'admin_logout' %}"
+          class="nav-item"
+          style="margin-top: auto"
+          >Logout</a
+        >
+      </nav>
+    </div>
+    <div class="main-content">{% block content %}{% endblock %}</div>
+
+    <script>
+      // Use a simple script to toggle sidebar
+      // Note: Inline onclick is used above for simplicity in admin template
+    </script>
+  </body>
+</html>

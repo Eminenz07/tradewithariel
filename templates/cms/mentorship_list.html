@@ -1,0 +1,49 @@
+{% extends 'cms/base_cms.html' %} {% block content %}
+<div class="header">
+  <h1>Mentorship Section</h1>
+  <a href="{% url 'mentorship_create' %}" class="btn btn-accent"
+    >+ Add New Card</a
+  >
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Link</th>
+        <th>Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for card in cards %}
+      <tr>
+        <td>{{ card.title }}</td>
+        <td>{{ card.destination_link }}</td>
+        <td>{% if card.is_active %}✅{% else %}❌{% endif %}</td>
+        <td>
+          <a
+            href="{% url 'mentorship_edit' card.pk %}"
+            style="margin-right: 10px; color: blue"
+            >Edit</a
+          >
+          <a
+            href="{% url 'mentorship_disable' card.pk %}"
+            style="color: {% if card.is_active %}red{% else %}green{% endif %}"
+          >
+            {% if card.is_active %}Disable{% else %}Enable{% endif %}
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" style="text-align: center">
+          No mentorship cards found.
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

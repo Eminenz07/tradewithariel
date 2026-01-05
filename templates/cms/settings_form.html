@@ -1,0 +1,27 @@
+{% extends 'cms/base_cms.html' %} {% block content %}
+<div class="header">
+  <h1>Site Settings</h1>
+  <a href="{% url 'dashboard' %}" class="btn">Back to Dashboard</a>
+</div>
+
+<div class="card" style="max-width: 600px">
+  <form method="POST">
+    {% csrf_token %}
+
+    <label>Contact Email Receiver</label>
+    <p style="margin-bottom: 10px; font-size: 0.9em; color: #666">
+      All "Contact Us" form submissions will be sent to this email address.
+    </p>
+    <input
+      type="email"
+      name="contact_email"
+      value="{{ settings.contact_email }}"
+      required
+    />
+
+    <button type="submit" class="btn btn-accent" style="margin-top: 1rem">
+      Save Settings
+    </button>
+  </form>
+</div>
+{% endblock %}

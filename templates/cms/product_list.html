@@ -1,0 +1,47 @@
+{% extends 'cms/base_cms.html' %} {% block content %}
+<div class="header">
+  <h1>Marketplace Offers</h1>
+  <a href="{% url 'product_create' %}" class="btn btn-accent"
+    >+ Add New Offer</a
+  >
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>₦{{ product.price }}</td>
+        <td>{% if product.is_active %}✅{% else %}❌{% endif %}</td>
+        <td>
+          <a
+            href="{% url 'product_edit' product.pk %}"
+            style="margin-right: 10px; color: blue"
+            >Edit</a
+          >
+          <a
+            href="{% url 'product_disable' product.pk %}"
+            style="color: {% if product.is_active %}red{% else %}green{% endif %}"
+          >
+            {% if product.is_active %}Disable{% else %}Enable{% endif %}
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" style="text-align: center">No products found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

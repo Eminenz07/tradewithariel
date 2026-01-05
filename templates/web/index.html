@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeWithAriel | Institutional Trading</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/hero_anim.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/mobile_nav.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="glass-nav">
+      <div class="logo">TradeWithAriel</div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#mentorship">Mentorship</a></li>
+        <li><a href="#marketplace">Offers</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      {% if messages %}
+      <div
+        class="messages"
+        style="position: fixed; top: 90px; right: 20px; z-index: 2000"
+      >
+        {% for message in messages %}
+        <div
+          class="glass-card"
+          style="
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--primary-green);
+          "
+        >
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="hero-background-anim">
+        <div class="marquee">
+          {% for img in hero_images %}
+          <img src="{% static img %}" alt="Trading result" />
+          {% endfor %}
+          <!-- Duplicate for seamless loop -->
+          {% for img in hero_images %}
+          <img src="{% static img %}" alt="Trading result" />
+          {% endfor %}
+        </div>
+      </div>
+      <div class="glass-container hero-content">
+        <h1>Institutional Clarity.</h1>
+        <p>Master the markets with precision, structure, and zero hype.</p>
+        <a href="#mentorship" class="cta-button">Explore Mentorship</a>
+      </div>
+    </section>
+
+    <!-- Mentorship Section -->
+    <section id="mentorship" class="section-padding">
+      <h2 class="section-title">Mentorship & Community</h2>
+      <div class="grid-container">
+        {% for card in mentorship_cards %}
+        <a
+          href="{{ card.destination_link }}"
+          class="glass-card mentorship-card"
+          target="_blank"
+        >
+          {% if card.image %}
+          <div class="card-image-wrapper">
+            <img
+              src="{{ card.image.url }}"
+              alt="{{ card.title }}"
+              class="card-image"
+            />
+          </div>
+          {% endif %}
+          <div class="card-content">
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+          </div>
+        </a>
+        {% empty %}
+        <p>No mentorship options currently available.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="section-padding">
+      <h2 class="section-title">Marketplace</h2>
+      <div class="grid-container">
+        {% for product in products %}
+        <div class="glass-card product-card">
+          {% if product.image %}
+          <div class="card-image-wrapper">
+            <img
+              src="{{ product.image.url }}"
+              alt="{{ product.name }}"
+              class="card-image"
+            />
+          </div>
+          {% endif %}
+          <div class="card-content">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <div class="price">₦{{ product.price }}</div>
+            <button class="cta-button small">Buy Now</button>
+          </div>
+        </div>
+        {% empty %}
+        <p>No products currently available.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+      <h2 class="section-title">{{ about_section.title|default:"About" }}</h2>
+      <div class="glass-container about-layout">
+        <div class="about-text">
+          {% if about_section and about_section.content %}
+          <p>{{ about_section.content|linebreaksbr }}</p>
+          {% else %}
+          <p>Content coming soon.</p>
+          {% endif %}
+        </div>
+        {% if about_section.image %}
+        <div class="about-image">
+          <img src="{{ about_section.image.url }}" alt="About Image" />
+        </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+      <div class="glass-container contact-form-container">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST" class="contact-form">
+          {% csrf_token %}
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            class="glass-input"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            class="glass-input"
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+            class="glass-input"
+          ></textarea>
+          <button type="submit" class="cta-button">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; {% now "Y" %} TradeWithAriel. All rights reserved.</p>
+      <p class="disclaimer">Not financial advice. Trading involves risk.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media (User uploads - typically not in git, but depends on user preference. 
+# For this specific project where user wants "current state", maybe they want it? 
+# Standard practice is to ignore.)
+media/
+staticfiles/
+
+# IDE
+.vscode/
+.idea/
+.gemini/

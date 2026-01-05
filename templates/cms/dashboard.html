@@ -1,0 +1,43 @@
+{% extends 'cms/base_cms.html' %} {% block content %}
+<div class="header">
+  <h1>Dashboard Overview</h1>
+</div>
+
+<div class="card">
+  <h3>Welcome back, Admin.</h3>
+  <p>Select a section from the sidebar to manage content on the live site.</p>
+</div>
+
+<div
+  style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  "
+>
+  <div class="card">
+    <h4>Mentorship Cards</h4>
+    <p style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0">
+      {{ mentorship_count }}
+    </p>
+    <a href="{% url 'mentorship_list' %}" class="btn">Manage</a>
+  </div>
+  <div class="card">
+    <h4>Active Offers</h4>
+    <p style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0">
+      {{ product_count }}
+    </p>
+    <a href="{% url 'product_list' %}" class="btn">Manage</a>
+  </div>
+  <div class="card">
+    <h4>About Section</h4>
+    <p>Edit bio and image</p>
+    <a href="{% url 'about_edit' %}" class="btn">Manage</a>
+  </div>
+  <div class="card">
+    <h4>Settings</h4>
+    <p>Configure contact email</p>
+    <a href="{% url 'settings_edit' %}" class="btn">Configure</a>
+  </div>
+</div>
+{% endblock %}
