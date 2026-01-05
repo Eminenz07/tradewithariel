@@ -110,9 +110,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # [NEW] Cloudinary Configuration
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dg28aohu0',
-    'API_KEY': '424367429367357',
-    'API_SECRET': 'hEpfvh009SQGZDa1uJJw0L879-8',
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
 
 # [NEW] Django 5.0+ Storage Configuration
