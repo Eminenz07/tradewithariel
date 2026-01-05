@@ -17,6 +17,12 @@
   scroll-behavior: smooth;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative; /* Fix for absolute positioning containment */
+}
+
 body {
   background-color: var(--bg-dark);
   color: var(--text-white);
