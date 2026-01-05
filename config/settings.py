@@ -33,8 +33,14 @@ import os
 
 # ... (existing code) ...
 
-# UPDATE: Allow all hosts for Render (or specific domain)
+# UPDATE: Allow all hosts for Render
 ALLOWED_HOSTS = ['*']
+
+# [NEW] Trust Render for CSRF (Fixes 403 Forbidden)
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+
+# [NEW] Trust the SSL Header from Render's Proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 INSTALLED_APPS = [
