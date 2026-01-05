@@ -17,11 +17,9 @@
   scroll-behavior: smooth;
 }
 
-html, body {
+/* html, body { 
   width: 100%;
-  overflow-x: hidden;
-  position: relative; /* Fix for absolute positioning containment */
-}
+}  Removed overflow-x from here to restore sticky nav */
 
 body {
   background-color: var(--bg-dark);
