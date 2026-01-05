@@ -37,14 +37,15 @@ import os
 ALLOWED_HOSTS = ['*']
 
 # Application definition
-INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage', # [NEW]
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'cloudinary', # [NEW]
     'web',
     'cms',
 ]
@@ -103,8 +104,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # [NEW] Enable Whitenoise (Simpler storage to avoid missing file errors)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# [NEW] Cloudinary Configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dg28aohu0',
+    'API_KEY': '424367429367357',
+    'API_SECRET': 'hEpfvh009SQGZDa1uJJw0L879-8',
+}
+
+MEDIA_URL = '/media/'  # Cloudinary handles the URL automatically
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Logging Configuration to see errors in Render Dashboard
 LOGGING = {

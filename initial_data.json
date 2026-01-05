@@ -1,0 +1,91 @@
+[
+{
+  "model": "cms.mentorshipcard",
+  "pk": 1,
+  "fields": {
+    "title": "Arielx Trading Journal",
+    "description": "Daily market analysis and setups.",
+    "destination_link": "https://www.youtube.com",
+    "image": "mentorship_images/IMG-20250428-WA0064.jpg",
+    "order": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "cms.mentorshipcard",
+  "pk": 2,
+  "fields": {
+    "title": "InvestorAriel Nigerian Stock Class",
+    "description": "Learn how to navigate and invest in the Nigerian Stocks and Bonds",
+    "destination_link": "https://example.com/class",
+    "image": "mentorship_images/IMG-20260104-WA0148.jpg",
+    "order": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "cms.mentorshipcard",
+  "pk": 3,
+  "fields": {
+    "title": "TradewithAriel Crypto Community",
+    "description": "Collaborate with other traders and investors to learn, earn and navigate the Crypto Space",
+    "destination_link": "https://www.youtube.com",
+    "image": "mentorship_images/IMG-20250509-WA0185.jpg",
+    "order": 0,
+    "is_active": true
+  }
+},
+{
+  "model": "cms.mentorshipcard",
+  "pk": 4,
+  "fields": {
+    "title": "rgd",
+    "description": "sdsgnh",
+    "destination_link": "https://www.youtube.com",
+    "image": "",
+    "order": 0,
+    "is_active": false
+  }
+},
+{
+  "model": "cms.product",
+  "pk": 1,
+  "fields": {
+    "name": "Aqua Funded Prop",
+    "description": "Discounted access to top firms.",
+    "price": "10000.00",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-01-04T20:05:34.126Z"
+  }
+},
+{
+  "model": "cms.product",
+  "pk": 2,
+  "fields": {
+    "name": "SUB HERO",
+    "description": "VTU Portal",
+    "price": "9999.99",
+    "image": "products/react.png",
+    "is_active": true,
+    "created_at": "2026-01-04T21:57:29.536Z"
+  }
+},
+{
+  "model": "cms.aboutsection",
+  "pk": 1,
+  "fields": {
+    "title": "About Us.",
+    "content": "Investor Ariel is a professional trader with over 5 years of experience in Forex, Stocks and Commodities...\r\n\r\nCEO of TWA and Assistant COO of Eright VTU pro",
+    "image": "",
+    "updated_at": "2026-01-04T21:41:15.275Z"
+  }
+},
+{
+  "model": "cms.sitesettings",
+  "pk": 1,
+  "fields": {
+    "contact_email": "tradewithariel@gmail.com"
+  }
+}
+]
