@@ -108,9 +108,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# [NEW] Enable Whitenoise (Simpler storage to avoid missing file errors)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-
 # [NEW] Cloudinary Configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dg28aohu0',
@@ -118,8 +115,17 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'hEpfvh009SQGZDa1uJJw0L879-8',
 }
 
-MEDIA_URL = '/media/'  # Cloudinary handles the URL automatically
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# [NEW] Django 5.0+ Storage Configuration
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
+
+MEDIA_URL = '/media/'  # Placeholder for local dev, overriden by Cloudinary per-file
 
 # Logging Configuration to see errors in Render Dashboard
 LOGGING = {
