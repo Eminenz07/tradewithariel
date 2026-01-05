@@ -36,7 +36,20 @@
         >
       </nav>
     </div>
-    <div class="main-content">{% block content %}{% endblock %}</div>
+      </nav>
+    </div>
+    <div class="main-content">
+        {% if messages %}
+        <div class="messages-container" style="margin-bottom: 20px;">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" style="padding: 10px; border-radius: 5px; background: rgba(0,255,136,0.1); border: 1px solid var(--primary-green); color: white;">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
 
     <script>
       // Use a simple script to toggle sidebar
